@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import murach.business.User;
 
 @WebServlet("/survey")
 public class SurveyServlet extends HttpServlet {
@@ -40,17 +41,13 @@ public class SurveyServlet extends HttpServlet {
         List<String> announcements = (annArr == null) ? Collections.emptyList() : Arrays.asList(annArr);
 
         String contactPreference = req.getParameter("contactPreference");
+        
+        User user = new User(firstName, lastName, email, dob, aboutus, announcements, contactPreference);
 
-        // Truyền sang JSP kết quả
-        req.setAttribute("firstName", firstName);
-        req.setAttribute("lastName", lastName);
-        req.setAttribute("email", email);
-        req.setAttribute("dob", dob);
-        req.setAttribute("aboutus", aboutus);
-        req.setAttribute("announcements", announcements);
-        req.setAttribute("contactPreference", contactPreference);
+        // Gán vào attribute
+        req.setAttribute("user", user);
 
         // Forward tới trang cảm ơn
-        req.getRequestDispatcher("thanks.jsp").forward(req, resp);
+        req.getRequestDispatcher("survey.jsp").forward(req, resp);
     }
 }

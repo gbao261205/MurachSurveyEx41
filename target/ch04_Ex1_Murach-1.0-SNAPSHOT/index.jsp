@@ -58,9 +58,9 @@
         <br><br>
         <label for="contactPreference">Please contact me by:</label>
         <select name="contactPreference" id="contactPreference">
-            <option value="email_postalmail">Email or Postal mail</option>
-            <option value="emailOnly">Email only</option>
-            <option value="postalMail">Postal mail only</option>
+            <option value="Email or Postal mail">Email or Postal mail</option>
+            <option value="Email only">Email only</option>
+            <option value="Postal mail only">Postal mail only</option>
         </select>
 
         <br><br>

@@ -54,6 +54,10 @@
 
     <div class="card">
         <div class="row">
+            <span class="label">Email:</span>
+            <span class="value">${user.email}</span>
+        </div>
+        <div class="row">
             <span class="label">First Name:</span>
             <span class="value">${user.firstName}</span>
         </div>
@@ -62,29 +66,26 @@
             <span class="value">${user.lastName}</span>
         </div>
         <div class="row">
-            <span class="label">Email:</span>
-            <span class="value">${user.email}</span>
-        </div>
-        <div class="row">
-            <span class="label">Date of Birth:</span>
-            <span class="value">${user.dob}</span>
-        </div>
-        <div class="row">
-            <span class="label">Heard about us via:</span>
+            <span class="label">Heard From:</span>
             <span class="value">${user.aboutus}</span>
         </div>
-        <div class="row">
-            <span class="label">Announcements:</span>
-            <span class="value">
-                <c:forEach var="item" items="${user.announcements}">
-                    ${item}<br/>
-                </c:forEach>
-            </span>
-        </div>
-        <div class="row">
-            <span class="label">Contact by:</span>
-            <span class="value">${user.contactPreference}</span>
-        </div>
+        <c:if test="${not empty user.announcements}">
+            <div class="row">
+                <span class="label">Update:</span>
+                <span class="value">YES</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Contact via:</span>
+                <span class="value">${user.contactPreference}</span>
+            </div>
+        </c:if>
+        <c:if test="${empty user.announcements}">
+            <div class="row">
+                <span class="label">Update:</span>
+                <span class="value">NO</span>
+            </div>
+        </c:if>
     </div>
 
     <a href="<%= request.getContextPath() %>/index.jsp" class="back-btn">Back to form</a>

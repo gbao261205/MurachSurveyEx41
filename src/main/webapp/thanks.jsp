@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,46 +55,35 @@
     <div class="card">
         <div class="row">
             <span class="label">First Name:</span>
-            <span class="value">${firstName}</span>
+            <span class="value">${user.firstName}</span>
         </div>
         <div class="row">
             <span class="label">Last Name:</span>
-            <span class="value">${lastName}</span>
+            <span class="value">${user.lastName}</span>
         </div>
         <div class="row">
             <span class="label">Email:</span>
-            <span class="value">${email}</span>
+            <span class="value">${user.email}</span>
         </div>
         <div class="row">
             <span class="label">Date of Birth:</span>
-            <span class="value">${dob}</span>
+            <span class="value">${user.dob}</span>
         </div>
         <div class="row">
             <span class="label">Heard about us via:</span>
-            <span class="value">${aboutus}</span>
+            <span class="value">${user.aboutus}</span>
         </div>
         <div class="row">
             <span class="label">Announcements:</span>
             <span class="value">
-                <%
-                    List<String> anns = (List<String>) request.getAttribute("announcements");
-                    if (anns == null || anns.isEmpty()) {
-                %>
-                    No, thanks.
-                <%
-                    } else {
-                        for (String a : anns) {
-                %>
-                    <div><%= a %></div>
-                <%
-                        }
-                    }
-                %>
+                <c:forEach var="item" items="${user.announcements}">
+                    ${item}<br/>
+                </c:forEach>
             </span>
         </div>
         <div class="row">
             <span class="label">Contact by:</span>
-            <span class="value">${contactPreference}</span>
+            <span class="value">${user.contactPreference}</span>
         </div>
     </div>
 
